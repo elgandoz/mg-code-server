@@ -1,0 +1,32 @@
+{
+  // This task autofix populate VS Code with a `Drupal Clean` task.
+  // It will format the active open file according to Drupal Coding Standards
+  // Look in the command palette for `Configure default Build task` and select
+  // `Drupal Clean`. You can now clean the active file running `Run Build Task`.
+  //
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Drupal Clean",
+      "type": "shell",
+      "command": "phpcbf",
+      "args": [
+        "--standard=Drupal",
+        "--ignore-annotations",
+        "--tab-width=2",
+        // "-vvv",
+        "${file}"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}

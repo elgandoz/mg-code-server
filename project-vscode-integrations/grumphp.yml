@@ -1,0 +1,51 @@
+parameters:
+  additional_info: "\nEnforcing coding standards: https://pop.awm.gov.au/docs/#/?id=commits\n"
+  ascii:
+    failed: failed.txt
+    succeeded: ~
+  git_dir: .
+  bin_dir: vendor/bin
+  tasks:
+    phpcs:
+      # For details about this conf: https://www.drupal.org/node/1587138
+      standard:
+        - Drupal
+        - DrupalPractice
+      triggered_by:
+        - php
+        - module
+        - inc
+        - install
+        - profile
+        - theme
+        - info
+        - yml
+        - txt
+        - md
+        - css
+      # Only verify user custom folders
+      whitelist_patterns:
+        - /^docroot\/modules\/custom\/(.*)/
+        - /^docroot\/themes\/custom\/(.*)/
+      ignore_patterns:
+        - node_modules/
+        - bower_components/
+        - vendor/
+        - critical/
+        - '*.min.css'
+# Other possible tasks, inspired by vijaycs85/drupal-quality-checker
+    # phplint: ~
+    # yamllint: ~
+    # composer: ~
+    # jsonlint: ~
+    # phpcpd:
+    #   directory: './docroot'
+    #   exclude:
+    #     - 'core'
+    #     - 'libraries'
+    #     - 'modules/contrib'
+    #     - 'profile'
+    #     - 'sites/*/files'
+    #     - 'themes/contrib'
+    #     - 'vendor'
+    #     - 'node_modules'
