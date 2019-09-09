@@ -1,6 +1,6 @@
 # Path to your Code Server installation.
-# THIS MUST BE DONE BY THE INSTALL SCRIPT
-# export CS_PATH="~/.code-server"
+# THIS IS DONE BY THE INSTALL SCRIPT IN YOUR SHELL INIT (.bashrc or .zshrc)
+# export CS_PATH="/opt/server/code-server"
 
 # Source the required libstdc++ for CENTOS/RHEL 7
 export LD_LIBRARY_PATH=$CS_PATH/lib64:$LD_LIBRARY_PATH
