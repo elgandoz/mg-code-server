@@ -1,0 +1,18 @@
+# Path to your Code Server installation.
+# THIS MUST BE DONE BY THE INSTALL SCRIPT
+# export CS_PATH="~/.code-server"
+
+# Source the required libstdc++ for CENTOS/RHEL 7
+export LD_LIBRARY_PATH=$CS_PATH/lib64:$LD_LIBRARY_PATH
+
+# Source Software Collection (SCL) Git 2.19 (with Git LFS)
+if [ -f /opt/rh/rh-git218/enable ]; then
+    . /opt/rh/rh-git218/enable
+fi
+
+# Source the binaries for Code-server
+export PATH=$CS_PATH/bin:$PATH
+
+# Handy aliases
+alias code="code-server --disable-telemetry -e $CS_PATH/extensions /var/www/html"
+alias code2="code-server2 --auth password --port 8443 --cert --extensions-dir $CS_PATH/extensions /var/www/html"
